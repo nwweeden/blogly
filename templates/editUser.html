@@ -7,9 +7,10 @@
 <!-- Content goes here-->
     <h1>Edit a user</h1>
 
-    <form action="#" method="POST">
+    <form method="POST">
         <!--Once the form is sent, get info and add user to url
-        value="{{user.first_name}} is user's existing info unless changed-->
+        value="{{user.first_name}} is user's existing info unless changed
+        action="." form action "." goes to where you are; action="."-->
         
         <label for="first_name">First Name</label>
         <input name="first_name" type="text" value="{{user.first_name}}">
@@ -21,10 +22,13 @@
         <input name='image_url' type="url" value="{{user.image_url}}">
     
         
-        <button name="">Save</button>
+        <button>Save</button>
+
+        <button formaction="/users/{{user.id}}" formmethod="GET">Cancel</button>
+
+        <!-- Or can use use a link that looks like a button and just route them to the user -->
+        <!-- <a href="" class="btn btn-primary"></a> -->
+        
     </form>
 
-    <form action="/users/{{user.id}}">
-        <button name="">Cancel</button>
-    </form>
 {% endblock %}

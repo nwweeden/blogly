@@ -1,4 +1,5 @@
 """Blogly application."""
+
 from flask import Flask, request, redirect, render_template
 from models import db, connect_db, User
 from flask_debugtoolbar import DebugToolbarExtension
@@ -104,11 +105,8 @@ def commit_user_edits(user_id):
 def delete_user(user_id):
     '''delete the user'''
 
-    #delete from the db
-    db.session.filter(User.id == user_id).delete()
-    # user = User.query.get(user_id)
-    # db.session.delete(user)
+    user = User.query.get(user_id)
+    db.session.delete(user)
     db.session.commit()
 
-    #redirect to users
     return redirect("/users")
