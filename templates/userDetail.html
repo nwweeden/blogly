@@ -3,7 +3,18 @@
 {% block title %} User Detail {% endblock %}
 
 {% block content %}
+    <!-- Content goes here -->
+    <h1>{{user.first_name}} {{user.last_name}}</h1>
+    <img src="user.image_url" alt="">
 
-<!-- Content goes here -->
+    <!-- Is this the best way to route a user -->
+    <form action="/users/{{user.id}}/edit">
+        <button class="{{user.id}}">Edit</button>
+    </form>
+    
+    <form action="/users/{{user.id}}/delete" method="POST">
+        <button class="{{user.id}}">Delete</button>
+    </form>
+    
 
 {% endblock %}

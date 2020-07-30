@@ -3,7 +3,20 @@
 {% block title %} Create New User {% endblock %}
 
 {% block content %}
+    <!-- Content goes here -->
+    <h1>Create a User</h1>
+    <form action="#" method="POST">
+        <!--Once the form is sent, get info and add to users list-->
+        <label for="first_name">First Name</label>
+        <input name="first_name" type="text" placeholder="Enter a first name">
+        
+        <label for="last_name">Last Name</label>
+        <input name="last_name" type="text" placeholder="Enter a last name">
 
-<!-- Content goes here -->
+        <label for="image_url">Image Url</label>
+        <input name='image_url' type="text" placeholder="Provide an image of this user">
 
+        <button name="">Add</button>
+    </form>
+        
 {% endblock %}

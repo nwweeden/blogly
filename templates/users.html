@@ -3,7 +3,11 @@
 {% block title %} All Users {% endblock %}
 
 {% block content %}
-
-<!-- Content goes here -->
-
+    <!-- Content goes here -->
+    <h1>Users</h1>
+    <ul>
+    {% for user in users %}
+        <li> <a href="users/{{user.id}}">{{user.first_name}} {{user.last_name}}</a></li>
+    {% endfor %}
+    </ul>
 {% endblock %}

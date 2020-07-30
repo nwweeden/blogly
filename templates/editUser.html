@@ -4,6 +4,27 @@
 
 {% block content %}
 
-<!-- Content goes here -->
+<!-- Content goes here-->
+    <h1>Edit a user</h1>
 
+    <form action="#" method="POST">
+        <!--Once the form is sent, get info and add user to url
+        value="{{user.first_name}} is user's existing info unless changed-->
+        
+        <label for="first_name">First Name</label>
+        <input name="first_name" type="text" value="{{user.first_name}}">
+    
+        <label for="last_name">Last Name</label>
+        <input name="last_name" type="text" value="{{user.last_name}}">
+    
+        <label for="image_url">Image Url</label>
+        <input name='image_url' type="url" value="{{user.image_url}}">
+    
+        
+        <button name="">Save</button>
+    </form>
+
+    <form action="/users/{{user.id}}">
+        <button name="">Cancel</button>
+    </form>
 {% endblock %}

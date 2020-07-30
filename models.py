@@ -21,3 +21,4 @@ class User(db.Model):
     first_name = db.Column(db.String(50), nullable=False, default='')
     last_name = db.Column(db.String(50), nullable=False)
     image_url = db.Column(db.String, nullable=False, default='')  #should we include a default image???
+  
