@@ -15,6 +15,17 @@
     <form action="/users/{{user.id}}/delete" method="POST">
         <button class="{{user.id}}">Delete</button>
     </form>
+
+    <h3>Posts</h3>
+    <ul>
+        {% for post in user_posts %}
+        <li><a href="/posts/{{post.id}}">{{post.title}}</a></li>
+        {% endfor %}
+    </ul>
+
+    <form action="/users/{{user.id}}/posts/new">
+        <button>Add Post</button>
+    </form>
     
 
 {% endblock %}

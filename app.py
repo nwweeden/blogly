@@ -1,7 +1,7 @@
 """Blogly application."""
 
 from flask import Flask, request, redirect, render_template
-from models import db, connect_db, User
+from models import db, connect_db, User, Post
 from flask_debugtoolbar import DebugToolbarExtension
 
 app = Flask(__name__)
@@ -60,10 +60,12 @@ def add_form_info():
 
 @app.route('/users/<int:user_id>')
 def show_user_info(user_id):
-    '''show information about given user'''
+    '''show information about given user and their posts'''
 
     user = User.query.get_or_404(user_id)
-    return render_template("userDetail.html", user=user)
+    user_posts = user.posts
+
+    return render_template("userDetail.html", user=user, user_posts=user_posts)
 
 
 
@@ -101,6 +103,7 @@ def commit_user_edits(user_id):
     # newUser = user.id
     return redirect("/users")
 
+
 @app.route('/users/<int:user_id>/delete', methods=['POST'])
 def delete_user(user_id):
     '''delete the user'''
@@ -110,3 +113,26 @@ def delete_user(user_id):
     db.session.commit()
 
     return redirect("/users")
+
+
+@app.route("/users/<int:user_id>/posts/new")
+def new_post(user_id):
+    '''create a post'''
+
+    user = User.query.get(user_id)
+
+    return render_template('newPost.html', user=user)
+
+
+@app.route('/users/<int:user_id>/posts/new', methods=['POST'])
+def save_post(user_id):
+
+    title = request.form['title']
+    content = request.form['content']
+
+    newpost = Post(title=title, content=content, user_id=user_id)
+
+    db.session.add(newpost)
+    db.session.commit()
+
+    return redirect(f'/users/{user_id}')

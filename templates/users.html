@@ -10,4 +10,8 @@
         <li> <a href="users/{{user.id}}">{{user.first_name}} {{user.last_name}}</a></li>
     {% endfor %}
     </ul>
+    <form action="/users/new">
+        <button>Create New User</button>
+    </form>
+    <!-- <button formaction="/users/new" formmethod='GET'>Create New User</button> -->
 {% endblock %}
