@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %} Edit Post {% endblock %}
+
+{% block content %}
+
+<h1>Edit Post</h1>
+<form method="POST">
+
+    <label for="title">Edit Post</label>
+    <input type="text" name='title' value="{{post.title}}">
+    <label for="content">Post Content</label>
+    <input type="text" name='content' value="{{post.title}}">
+    
+    <button>Edit</button>
+
+    <!-- do we need the user instace info to link to edit post page "/users/{{user.id}}" -->
+    <a href="/users/{{user.id}}" class='btn btn-primary'>Cancel</a>
+
+
+</form>
+
+
+{% endblock %}

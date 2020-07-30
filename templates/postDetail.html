@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %} Post Detail {% endblock %}
+
+{% block content %}
+
+    <h1>{{post.title}}</h1>
+    <p>{{post.content}}</p>
+    <!-- why can't we add post.first_name -->
+    <p>by {{user.first_name}} {{user.last_name}}</p>
+
+    
+    <form>
+
+        <!-- route back to edit id -->
+        <button formaction="/posts/{{post.id}}/edit" formmethod="GET">Edit</button>
+        
+        <button>Delete</button>
+        
+        <!-- Sends user back to their home page -->
+        <a href="/users/{{post.user_id}}" class='btn btn-primary'>Cancel</a>
+    </form>
+    
+
+
+
+{% endblock %}

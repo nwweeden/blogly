@@ -117,7 +117,7 @@ def delete_user(user_id):
 
 @app.route("/users/<int:user_id>/posts/new")
 def new_post(user_id):
-    '''create a post'''
+    '''Show create a post form'''
 
     user = User.query.get(user_id)
 
@@ -126,6 +126,7 @@ def new_post(user_id):
 
 @app.route('/users/<int:user_id>/posts/new', methods=['POST'])
 def save_post(user_id):
+    """handle form submission."""
 
     title = request.form['title']
     content = request.form['content']
@@ -136,3 +137,27 @@ def save_post(user_id):
     db.session.commit()
 
     return redirect(f'/users/{user_id}')
+
+
+@app.route("/posts/<int:post_id>")
+def show_post(post_id):
+    """Show a post."""
+
+    post = Post.query.get(post_id)
+
+    user_id = post.user_id
+    #bring in user instance
+    user = User.query.get(user_id)
+
+    return render_template("postDetail.html", post=post, user=user)
+
+
+@app.route("/posts/<int:post_id>/edit")
+def edit_post(post_id):
+    """"Show Edit form. """
+
+    post = Post.query.get(post_id)
+    user_id = post.user_id
+    user = User.query.get(user_id)
+
+    return render_template("editPost.html", post=post, user=user)
